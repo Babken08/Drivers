@@ -1,13 +1,116 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.android.driversapplication.Fragments.RegisterFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:hint="@string/hint_name" />
+
+    <EditText
+        android:id="@+id/et_srNmae"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_name"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/hint_srName" />
+
+    <EditText
+        android:id="@+id/et_phone1"
+        android:inputType="number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_srNmae"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/hint_phone1" />
+
+    <EditText
+        android:id="@+id/et_phone2"
+        android:inputType="number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_phone1"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/hint_phone2" />
+
+    <EditText
+        android:id="@+id/et_passport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_phone2"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/hint_passport" />
+
+    <EditText
+        android:id="@+id/et_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_passport"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/hint_addres" />
+
+    <EditText
+        android:id="@+id/et_auto_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_address"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/hint_auto_number" />
+
+    <EditText
+        android:id="@+id/et_auto_passport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_auto_num"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/hint_auto_passport" />
+
+    <LinearLayout
+        android:id="@+id/laynerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_auto_passport"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_araqum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@color/colorAccent"
+            android:text="@string/Button_araqum" />
+
+        <Button
+            android:id="@+id/btn_taxi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@color/colorAccent"
+            android:text="@string/Button_taxi" />
+
+
+        <Button
+            android:id="@+id/btn_evokuator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:text="@string/Button_evokuator" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/laynerlayout"
+        android:layout_centerHorizontal="true"
+        android:text="@string/button_allow_text" />
+
+</RelativeLayout>

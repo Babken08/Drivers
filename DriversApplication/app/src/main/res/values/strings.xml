@@ -3,4 +3,39 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_name">name</string>
+    <string name="hint_srName">srName</string>
+    <string name="hint_phone1">phone1</string>
+    <string name="hint_phone2">phone2</string>
+    <string name="hint_passport">passport</string>
+    <string name="hint_addres">address</string>
+    <string name="hint_auto_number">autoNumber</string>
+    <string name="hint_auto_passport">autoPassport</string>
+    <string name="button_allow_text"> Allow</string>
+    <string name="button_register">register</string>
+    <string name="hint_email">email</string>
+    <string name="hint_password">password</string>
+    <string name="enter_email">Enter email address!</string>
+    <string name="enter_password">Enter password!</string>
+    <string name="password_invalid">Password too short, enter minimum 6 characters!</string>
+    <string name="task_noisSuccessful">get your email address or password!</string>
+    <string name="Button_taxi">Taxi</string>
+    <string name="Button_araqum">Araqum</string>
+    <string name="Button_evokuator">Evokuator</string>
+    <string name="toast_choos_3">you can not choose 3 together</string>
+    <string name="toast_choos_evakuator">you can not choose 3 together</string>
+    <string name="toast_no_selected_file">you do not have the selected field</string>
+    <string name="enter_your_name">enter your name</string>
+    <string name="enter_your_srName">enter your srName</string>
+    <string name="invalid_number1">invalid number1</string>
+    <string name="invalid_number2">invalid number2</string>
+    <string name="enter_your_passport">Enter your passport</string>
+    <string name="enter_your_address">Enter your address</string>
+    <string name="enter_your_auto_number">enter your auto number</string>
+    <string name="enter_your_valid_auto_passport">enter your valid auto passport</string>
+    <string name="Taxi">Taxi</string>
+    <string name="Araqum">Araqum</string>
+    <string name="Evokuator">Evokuator</string>
+
+
 </resources>
