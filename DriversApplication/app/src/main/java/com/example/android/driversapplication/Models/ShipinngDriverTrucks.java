@@ -1,10 +1,10 @@
 package com.example.android.driversapplication.Models;
 
 /**
- * Created by Android on 05.09.2017.
+ * Created by Android on 06.09.2017.
  */
 
-public class Driver {
+public class ShipinngDriverTrucks {
     private  String name;
     private  String srName;
     private long phone1;
@@ -13,13 +13,14 @@ public class Driver {
     private String address;
     private String autoNumber;
     private String autoPassport;
+    private int truck;
     private String uid;
 
-    public Driver() {
+    public ShipinngDriverTrucks() {
 
     }
 
-    public Driver(String name, String srName, long phone1, long phone2, String passport, String address, String autoNumber, String autoPassport) {
+    public ShipinngDriverTrucks(String name, String srName, long phone1, long phone2, String passport, String address, String autoNumber, String autoPassport, int truck) {
         this.name = name;
         this.srName = srName;
         this.phone1 = phone1;
@@ -28,29 +29,9 @@ public class Driver {
         this.address = address;
         this.autoNumber = autoNumber;
         this.autoPassport = autoPassport;
+        this.truck = truck;
         this.uid = passport;
     }
-
-//    public Driver(String name, String srName, long phone1, long phone2, String passport, String address, String autoNumber, String autoPassport, int size) {
-//        this.name = name;
-//        this.srName = srName;
-//        this.phone1 = phone1;
-//        this.phone2 = phone2;
-//        this.passport = passport;
-//        this.address = address;
-//        this.autoNumber = autoNumber;
-//        this.autoPassport = autoPassport;
-//        this.size = size;
-//        this.uid = passport;
-//    }
-
-
-
-    public String getUid() {
-        return uid;
-    }
-
-
 
     public String getName() {
         return name;
@@ -72,7 +53,7 @@ public class Driver {
         return phone1;
     }
 
-    public void setPhone1(int phone1) {
+    public void setPhone1(long phone1) {
         this.phone1 = phone1;
     }
 
@@ -80,7 +61,7 @@ public class Driver {
         return phone2;
     }
 
-    public void setPhone2(int phone2) {
+    public void setPhone2(long phone2) {
         this.phone2 = phone2;
     }
 
@@ -114,5 +95,21 @@ public class Driver {
 
     public void setAutoPassport(String autoPassport) {
         this.autoPassport = autoPassport;
+    }
+
+    public int getTruck() {
+        return truck;
+    }
+
+    public void setTruck(int truck) {
+        this.truck = truck;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

@@ -4,103 +4,165 @@
     android:layout_height="match_parent"
     tools:context="com.example.android.driversapplication.Fragments.RegisterFragment">
 
+    <LinearLayout
+        android:id="@+id/layout_name"
+        android:layout_marginTop="36dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/et_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:hint="@string/hint_name" />
+        <EditText
+            android:id="@+id/et_name"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_name" />
 
-    <EditText
-        android:id="@+id/et_srNmae"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_name"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/hint_srName" />
+        <EditText
+            android:id="@+id/et_srNmae"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_srName" />
 
-    <EditText
-        android:id="@+id/et_phone1"
-        android:inputType="number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_srNmae"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/hint_phone1" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/et_phone2"
-        android:inputType="number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_phone1"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/hint_phone2" />
 
-    <EditText
-        android:id="@+id/et_passport"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_phone2"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/hint_passport" />
+    <LinearLayout
+        android:id="@+id/layout_phone"
+        android:layout_below="@+id/layout_name"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/et_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/et_passport"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/hint_addres" />
+        <EditText
+            android:id="@+id/et_phone1"
+            android:gravity="center"
+            android:inputType="number"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_phone1" />
 
-    <EditText
-        android:id="@+id/et_auto_num"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/et_address"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/hint_auto_number" />
+        <EditText
+            android:id="@+id/et_phone2"
+            android:gravity="center"
+            android:inputType="number"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_phone2" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/et_auto_passport"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/et_auto_num"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/hint_auto_passport" />
+
+
+  <LinearLayout
+      android:id="@+id/layout_passport"
+      android:layout_below="@+id/layout_phone"
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <EditText
+          android:id="@+id/et_passport"
+          android:gravity="center"
+          android:layout_width="0dp"
+          android:layout_weight="1"
+          android:layout_height="wrap_content"
+          android:hint="@string/hint_passport" />
+
+      <EditText
+          android:id="@+id/et_address"
+          android:gravity="center"
+          android:layout_width="0dp"
+          android:layout_weight="1"
+          android:layout_height="wrap_content"
+          android:hint="@string/hint_addres" />
+
+  </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_auto"
+        android:layout_below="@+id/layout_passport"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_auto_num"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_auto_number" />
+
+        <EditText
+            android:id="@+id/et_auto_passport"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_auto_passport" />
+
+    </LinearLayout>
+
+
+
+
 
     <LinearLayout
         android:id="@+id/laynerlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/et_auto_passport"
+        android:layout_below="@+id/layout_auto"
         android:gravity="center"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_araqum"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:background="@color/colorAccent"
-            android:text="@string/Button_araqum" />
+            android:text="@string/Button_shipping" />
+
+        <Button
+            android:id="@+id/btn_bernatar_araqum"
+            android:text="@string/shipping_trucks"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btn_taxi"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:background="@color/colorAccent"
             android:text="@string/Button_taxi" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:gravity="center"
+        android:layout_below="@+id/laynerlayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_manipulyator"
+            android:text="manipulyator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
 
         <Button
             android:id="@+id/btn_evokuator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
             android:text="@string/Button_evokuator" />
 
     </LinearLayout>
@@ -109,7 +171,7 @@
         android:id="@+id/btn_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/laynerlayout"
+        android:layout_below="@id/buttons"
         android:layout_centerHorizontal="true"
         android:text="@string/button_allow_text" />
 

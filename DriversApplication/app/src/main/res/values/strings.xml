@@ -37,6 +37,18 @@
     <string name="Araqum">Araqum</string>
     <string name="Evokuator">Evokuator</string>
     <string name="title_activity_maps">Map</string>
+    <string name="your_car_truck_3">your_car_truck_3</string>
+    <string name="Button_shipping">Button_shipping</string>
+    <string name="shipping_trucks">Shipping_trucks</string>
+    <string name="enter_your_car_truck">your_car_truck</string>
+    <string name="your_car_truck_6">your car truck 6</string>
+    <string name="your_car_truck_9">your car truck 9</string>
+    <string name="your_car_seats">your_car_seats</string>
+    <string name="number_of_seats_4">number_of_seats_4</string>
+    <string name="number_of_seats_7">number_of_seats_7</string>
+    <string name="ok">Ok</string>
+    <string name="cansel">Cansel</string>
+    <string name="enter_your_car_seats">Enter your car seats</string>
 
 
 </resources>
