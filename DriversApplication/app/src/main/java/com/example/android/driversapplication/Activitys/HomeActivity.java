@@ -13,6 +13,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+<<<<<<< Updated upstream
         getSupportFragmentManager().beginTransaction().replace(R.id.hom_conteiner, HomeFragment.newInstance()).commit();
     }
 
@@ -20,5 +21,9 @@ public class HomeActivity extends AppCompatActivity {
     public void onBackPressed() {
        super.onBackPressed();
         finish();
+=======
+
+        getSupportFragmentManager().beginTransaction().add(R.id.conteiner,new HomeFragment()).commit();
+>>>>>>> Stashed changes
     }
 }
