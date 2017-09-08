@@ -39,8 +39,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         initFABMenu();
         return rootView;
     }
-<<<<<<< Updated upstream
-=======
 
     private void initFABMenu() {
         fam = (FloatingActionMenu) rootView.findViewById(R.id.fab_menu);
@@ -57,7 +55,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.fab1:{
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.conteiner,new HistoryFragment()).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.hom_conteiner,new HistoryFragment()).commit();
                 break;
             }
             case R.id.fab2:{
@@ -69,5 +67,4 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
 
     }
->>>>>>> Stashed changes
 }

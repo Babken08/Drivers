@@ -383,6 +383,5 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
     public void onBackPressed() {
         android.os.Process.killProcess(android.os.Process.myPid());
         finish();
-        Toast.makeText(this, "aaaaaaaaaaaaaaaaaaaaaaa", Toast.LENGTH_SHORT).show();
     }
 }

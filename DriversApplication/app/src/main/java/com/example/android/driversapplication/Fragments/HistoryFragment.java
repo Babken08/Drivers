@@ -27,7 +27,6 @@ public class HistoryFragment extends Fragment {
 
     public HistoryFragment(){}
 
-<<<<<<< Updated upstream
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -37,15 +36,6 @@ public class HistoryFragment extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
-        Bundle args = new Bundle();
-
-=======
-
-    public static HistoryFragment newInstance() {
-        HistoryFragment fragment = new HistoryFragment();
-        Bundle args = new Bundle();
->>>>>>> Stashed changes
-        fragment.setArguments(args);
         return fragment;
     }
 
