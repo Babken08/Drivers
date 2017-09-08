@@ -39,7 +39,8 @@
 
         <activity
             android:name=".Activitys.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".Activitys.RegAddDataActivity"></activity>
     </application>
 
 </manifest>

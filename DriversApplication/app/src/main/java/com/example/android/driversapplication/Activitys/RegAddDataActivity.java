@@ -1,19 +1,17 @@
-package com.example.android.driversapplication.Fragments;
-
+package com.example.android.driversapplication.Activitys;
 
 import android.content.DialogInterface;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.driversapplication.Activitys.HomeActivity;
 import com.example.android.driversapplication.Models.Driver;
 import com.example.android.driversapplication.Models.ShipinngDriverTrucks;
 import com.example.android.driversapplication.Models.TaxiDriver;
@@ -21,9 +19,7 @@ import com.example.android.driversapplication.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RegisterFragment extends Fragment implements View.OnClickListener {
-
-
+public class RegAddDataActivity extends AppCompatActivity implements View.OnClickListener {
     private DatabaseReference myRefTaxi;
     private DatabaseReference myRefShipping;
     private DatabaseReference myRefEvokuator;
@@ -44,23 +40,19 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     private boolean filterable;
     private long phoneeeee1;
     private long phoneeeee2;
-    private DatabaseReference myRefShippingTruck;
-    private int x;
+    private DatabaseReference myRefShippingTruck;private int x;
     private DatabaseReference myRefManipulyator;
-
-
-    public RegisterFragment() {
-    }
-
-
-    public static RegisterFragment newInstance() {
-        RegisterFragment fragment = new RegisterFragment();
-        return fragment;
-    }
+    private Button btnManipulyator;
+    private Button btnShipingTruk;
+    private Button btnEvikuator;
+    private Button btnArsaqum;
+    private Button btnTaxi;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_reg_add_data);
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference();
         myRefTaxi = myRef.child(getString(R.string.Taxi));
@@ -68,16 +60,33 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         myRefShippingTruck = myRef.child("ShippingTruck");
         myRefEvokuator = myRef.child(getString(R.string.Evokuator));
         myRefManipulyator = myRef.child("Manipulyator");
+
+        findView();
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_register, container, false);
-        findView(v);
-        return v;
-    }
+    private void findView() {
+        etName = (EditText) findViewById(R.id.et_name);
+        etSrName = (EditText) findViewById(R.id.et_srNmae);
+        etPhone1 = (EditText) findViewById(R.id.et_phone1);
+        etPhone2 = (EditText) findViewById(R.id.et_phone2);
+        etPassport = (EditText) findViewById(R.id.et_passport);
+        etAddress = (EditText) findViewById(R.id.et_address);
+        etAutoNumber = (EditText) findViewById(R.id.et_auto_num);
+        etAutoPassport = (EditText) findViewById(R.id.et_auto_passport);
+        Button btnAccess = (Button) findViewById(R.id.btn_register);
+        btnShipingTruk = (Button) findViewById(R.id.btn_bernatar_araqum);
+        btnTaxi = (Button) findViewById(R.id.btn_taxi);
+        btnArsaqum = (Button) findViewById(R.id.btn_araqum);
+        btnEvikuator = (Button) findViewById(R.id.btn_evokuator);
+        btnManipulyator = (Button) findViewById(R.id.btn_manipulyator);
 
+        btnAccess.setOnClickListener(this);
+        btnTaxi.setOnClickListener(this);
+        btnArsaqum.setOnClickListener(this);
+        btnEvikuator.setOnClickListener(this);
+        btnShipingTruk.setOnClickListener(this);
+        btnManipulyator.setOnClickListener(this);
+    }
     private void addDatabase(DatabaseReference myReff, int x) {
         String name = etName.getText().toString();
         String srName = etSrName.getText().toString();
@@ -104,82 +113,61 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 myReff.child("users").child(taxist.getUid()).setValue(taxist);
             }
         }
-        if (filterable) {
-            if (x != 4 && x != 7 && x != 0) {
+        if(filterable) {
+            if(x != 4 && x != 7 && x != 0) {
                 ShipinngDriverTrucks sp = new ShipinngDriverTrucks(name, srName, phoneeeee1, phoneeeee2, passport, address, autoNumber, autoPassport, x);
                 myReff.child("users").child(sp.getUid()).setValue(sp);
             }
         }
     }
 
-
     private boolean filter(String name, String srName, long phone1, long phone2, String passport, String address, String autoNumber, String autoPassport) {
 
         filterable = true;
         if (name.isEmpty()) {
-            Toast.makeText(getContext(), R.string.enter_your_name, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.enter_your_name, Toast.LENGTH_SHORT).show();
             filterable = false;
         }
         if (srName.isEmpty()) {
-            Toast.makeText(getContext(), R.string.enter_your_srName, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.enter_your_srName, Toast.LENGTH_SHORT).show();
             filterable = false;
         }
         if (String.valueOf(phone1).length() < 11) {
-            Toast.makeText(getContext(), R.string.invalid_number1, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.invalid_number1, Toast.LENGTH_SHORT).show();
             filterable = false;
         }
         if (String.valueOf(phone2).length() < 11) {
-            Toast.makeText(getContext(), R.string.invalid_number2, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.invalid_number2, Toast.LENGTH_SHORT).show();
             filterable = false;
         }
         if (passport.length() < 9) {
-            Toast.makeText(getContext(), R.string.enter_your_passport, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.enter_your_passport, Toast.LENGTH_SHORT).show();
             filterable = false;
         }
         if (address.isEmpty()) {
-            Toast.makeText(getContext(), R.string.enter_your_address, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.enter_your_address, Toast.LENGTH_SHORT).show();
             filterable = false;
         }
         if (autoNumber.length() < 7) {
-            Toast.makeText(getContext(), R.string.enter_your_auto_number, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.enter_your_auto_number, Toast.LENGTH_SHORT).show();
             filterable = false;
         }
         if (autoPassport.length() < 15) {
-            Toast.makeText(getContext(), R.string.enter_your_valid_auto_passport, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.enter_your_valid_auto_passport, Toast.LENGTH_SHORT).show();
             filterable = false;
         }
         return filterable;
     }
 
 
-    private void findView(View v) {
-        etName = (EditText) v.findViewById(R.id.et_name);
-        etSrName = (EditText) v.findViewById(R.id.et_srNmae);
-        etPhone1 = (EditText) v.findViewById(R.id.et_phone1);
-        etPhone2 = (EditText) v.findViewById(R.id.et_phone2);
-        etPassport = (EditText) v.findViewById(R.id.et_passport);
-        etAddress = (EditText) v.findViewById(R.id.et_address);
-        etAutoNumber = (EditText) v.findViewById(R.id.et_auto_num);
-        etAutoPassport = (EditText) v.findViewById(R.id.et_auto_passport);
-        Button btnAccess = (Button) v.findViewById(R.id.btn_register);
-        Button btnShipingTruk = (Button) v.findViewById(R.id.btn_bernatar_araqum);
-        Button btnTaxi = (Button) v.findViewById(R.id.btn_taxi);
-        Button btnArsaqum = (Button) v.findViewById(R.id.btn_araqum);
-        Button btnEvikuator = (Button) v.findViewById(R.id.btn_evokuator);
-        Button btnManipulyator = (Button) v.findViewById(R.id.btn_manipulyator);
-
-        btnAccess.setOnClickListener(this);
-        btnTaxi.setOnClickListener(this);
-        btnArsaqum.setOnClickListener(this);
-        btnEvikuator.setOnClickListener(this);
-        btnShipingTruk.setOnClickListener(this);
-        btnManipulyator.setOnClickListener(this);
-    }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_taxi: {
+                btnTaxi.setBackgroundResource(R.color.colorGreen);
+                btnEvikuator.setBackgroundResource(R.color.colorTXAVARI);
+                btnShipingTruk.setBackgroundResource(R.color.colorTXAVARI);
+                btnManipulyator.setBackgroundResource(R.color.colorTXAVARI);
                 dialogTaxi();
                 taxi = true;
                 evokuator = false;
@@ -188,6 +176,10 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 break;
             }
             case R.id.btn_araqum: {
+                btnArsaqum.setBackgroundResource(R.color.colorGreen);
+                btnEvikuator.setBackgroundResource(R.color.colorTXAVARI);
+                btnShipingTruk.setBackgroundResource(R.color.colorTXAVARI);
+                btnManipulyator.setBackgroundResource(R.color.colorTXAVARI);
                 araqum = true;
                 evokuator = false;
                 shippingTruck = false;
@@ -195,6 +187,11 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 break;
             }
             case R.id.btn_bernatar_araqum: {
+                btnShipingTruk.setBackgroundResource(R.color.colorGreen);
+                btnManipulyator.setBackgroundResource(R.color.colorTXAVARI);
+                btnEvikuator.setBackgroundResource(R.color.colorTXAVARI);
+                btnTaxi.setBackgroundResource(R.color.colorTXAVARI);
+                btnArsaqum.setBackgroundResource(R.color.colorTXAVARI);
                 dialogShippingTruck();
                 shippingTruck = true;
                 taxi = false;
@@ -204,6 +201,11 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 break;
             }
             case R.id.btn_evokuator: {
+                btnEvikuator.setBackgroundResource(R.color.colorGreen);
+                btnShipingTruk.setBackgroundResource(R.color.colorTXAVARI);
+                btnManipulyator.setBackgroundResource(R.color.colorTXAVARI);
+                btnTaxi.setBackgroundResource(R.color.colorTXAVARI);
+                btnArsaqum.setBackgroundResource(R.color.colorTXAVARI);
                 evokuator = true;
                 taxi = false;
                 araqum = false;
@@ -212,6 +214,11 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 break;
             }
             case R.id.btn_manipulyator: {
+                btnManipulyator.setBackgroundResource(R.color.colorGreen);
+                btnTaxi.setBackgroundResource(R.color.colorTXAVARI);
+                btnArsaqum.setBackgroundResource(R.color.colorTXAVARI);
+                btnEvikuator.setBackgroundResource(R.color.colorTXAVARI);
+                btnShipingTruk.setBackgroundResource(R.color.colorTXAVARI);
                 manipulyator = true;
                 taxi = false;
                 araqum = false;
@@ -223,57 +230,51 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 if (taxi && !araqum) {
                     addDatabase(myRefTaxi, x);
                     addFragment();
-                    break;
+
                 }
                 if (taxi && araqum) {
                     addDatabase(myRefTaxi, x);
                     addDatabase(myRefShipping, 0);
                     addFragment();
-                    break;
 
                 }
 
                 if (araqum && !taxi) {
                     addDatabase(myRefShipping, 0);
                     addFragment();
-                    break;
+
                 }
 
                 if (evokuator) {
                     addDatabase(myRefEvokuator, 0);
                     addFragment();
-                    break;
+
                 }
                 if (shippingTruck) {
                     addDatabase(myRefShippingTruck, x);
                     addFragment();
-                    break;
                 }
-                if (manipulyator) {
+                if(manipulyator) {
                     addDatabase(myRefManipulyator, 0);
                     addFragment();
-                    break;
                 }
                 break;
             }
         }
     }
 
-
     private void addFragment() {
         if (filterable) {
-            //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.conto, fr).commit();
-//            Intent i = new Intent(getActivity(), HomeActivity.class);
-//            startActivity(i);
-//            getActivity().finish();
+            Intent i = new Intent(this, HomeActivity.class);
+            startActivity(i);
+            finish();
         }
     }
 
-
     private void dialogTaxi() {
 
-        AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(getContext());
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.dialogtaxi, null);
+        AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.dialogtaxi, null);
 
         mDialogBuilder.setView(view);
 
@@ -297,13 +298,13 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 .setCancelable(false)
                 .setPositiveButton(R.string.ok,
                         new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
+                            public void onClick(DialogInterface dialog,int id) {
                                 String a = ettext.getText().toString();
-                                if (!a.isEmpty()) {
+                                if(!a.isEmpty()){
                                     x = Integer.parseInt(a);
                                     dialog.dismiss();
                                 } else {
-                                    Toast.makeText(getContext(), R.string.enter_your_car_seats, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegAddDataActivity.this, R.string.enter_your_car_seats, Toast.LENGTH_SHORT).show();
                                 }
 
 
@@ -311,7 +312,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                         })
                 .setNegativeButton(R.string.cansel,
                         new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
+                            public void onClick(DialogInterface dialog,int id) {
                                 dialog.cancel();
                             }
                         });
@@ -322,8 +323,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     }
 
     private void dialogShippingTruck() {
-        AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(getContext());
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.dialogshipping, null);
+        AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.dialogshipping, null);
 
         mDialogBuilder.setView(view);
 
@@ -354,13 +355,13 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 .setCancelable(false)
                 .setPositiveButton(R.string.ok,
                         new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
+                            public void onClick(DialogInterface dialog,int id) {
                                 String a = ettext.getText().toString();
-                                if (!a.isEmpty()) {
+                                if(!a.isEmpty()){
                                     x = Integer.parseInt(a);
                                     dialog.dismiss();
                                 } else {
-                                    Toast.makeText(getContext(), R.string.enter_your_car_truck, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegAddDataActivity.this, R.string.enter_your_car_truck, Toast.LENGTH_SHORT).show();
                                 }
 
 
@@ -368,7 +369,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                         })
                 .setNegativeButton(R.string.cansel,
                         new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
+                            public void onClick(DialogInterface dialog,int id) {
                                 dialog.cancel();
                             }
                         });
@@ -376,5 +377,12 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
 
         alertDialog.show();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        android.os.Process.killProcess(android.os.Process.myPid());
+        finish();
+        Toast.makeText(this, "aaaaaaaaaaaaaaaaaaaaaaa", Toast.LENGTH_SHORT).show();
     }
 }

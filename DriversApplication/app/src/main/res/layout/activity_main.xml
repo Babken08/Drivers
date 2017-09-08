@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.android.driversapplication.Activitys.MainActivity">
+
+    <EditText
+        android:id="@+id/et_email"
+        android:inputType="textEmailAddress"
+        android:hint="@string/hint_email"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:inputType="textPassword"
+        android:hint="@string/hint_password"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/et_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_centerVertical="true"
+        android:text="@string/button_register"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/et_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <FrameLayout
         android:id="@+id/conto"
@@ -12,4 +40,4 @@
         android:layout_height="match_parent">
     </FrameLayout>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
