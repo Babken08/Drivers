@@ -30,7 +30,7 @@ public class HistoryRecyclerAdapter extends RecyclerView.Adapter<HistoryRecycler
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-
+//ssssssss
 
     }
 
