@@ -40,7 +40,8 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
     private boolean filterable;
     private long phoneeeee1;
     private long phoneeeee2;
-    private DatabaseReference myRefShippingTruck;private int x;
+    private DatabaseReference myRefShippingTruck;
+    private int x;
     private DatabaseReference myRefManipulyator;
     private Button btnManipulyator;
     private Button btnShipingTruk;
@@ -54,7 +55,7 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_reg_add_data);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference();
+        DatabaseReference myRef = database.getReference().child("drivers");
         myRefTaxi = myRef.child(getString(R.string.Taxi));
         myRefShipping = myRef.child("Shipping");
         myRefShippingTruck = myRef.child("ShippingTruck");

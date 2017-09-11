@@ -40,8 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:paddingBottom="12dp"
-        fab:fab_colorNormal="#DA4336"
-        fab:fab_colorPressed="#E75043"
+        fab:fab_colorNormal="#3c97ed"
+        fab:fab_colorPressed="#3c97ed"
         fab:fab_colorRipple="#99FFFFFF"
         fab:menu_labels_colorNormal="#FFFFFF"
         fab:menu_labels_colorPressed="#444444"
@@ -66,7 +66,7 @@
             android:id="@+id/fab2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_dialog_map"
+            android:src="@drawable/ic_phone_in_talk_black_24dp"
             fab:fab_label="@string/Feedback"
             fab:fab_size="mini" />
 

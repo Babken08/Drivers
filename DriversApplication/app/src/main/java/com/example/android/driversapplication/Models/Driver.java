@@ -13,6 +13,7 @@ public class Driver {
     private String address;
     private String autoNumber;
     private String autoPassport;
+    private String status;
     private String uid;
 
     public Driver() {
@@ -29,6 +30,7 @@ public class Driver {
         this.autoNumber = autoNumber;
         this.autoPassport = autoPassport;
         this.uid = passport;
+        status = "offLine";
     }
 
 //    public Driver(String name, String srName, long phone1, long phone2, String passport, String address, String autoNumber, String autoPassport, int size) {
@@ -45,6 +47,13 @@ public class Driver {
 //    }
 
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getUid() {
         return uid;

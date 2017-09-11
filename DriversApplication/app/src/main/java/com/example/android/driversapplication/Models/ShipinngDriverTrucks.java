@@ -15,6 +15,7 @@ public class ShipinngDriverTrucks {
     private String autoPassport;
     private int truck;
     private String uid;
+    private String status;
 
     public ShipinngDriverTrucks() {
 
@@ -31,10 +32,19 @@ public class ShipinngDriverTrucks {
         this.autoPassport = autoPassport;
         this.truck = truck;
         this.uid = passport;
+        status = "offLine";
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public void setName(String name) {

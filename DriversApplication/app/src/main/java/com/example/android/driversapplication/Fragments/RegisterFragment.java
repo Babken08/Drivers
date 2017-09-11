@@ -2,6 +2,7 @@ package com.example.android.driversapplication.Fragments;
 
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -47,6 +48,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     private DatabaseReference myRefShippingTruck;
     private int x;
     private DatabaseReference myRefManipulyator;
+    private DatabaseReference myRef;
 
 
     public RegisterFragment() {
@@ -62,7 +64,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference();
+         myRef = database.getReference().child("drivers");
         myRefTaxi = myRef.child(getString(R.string.Taxi));
         myRefShipping = myRef.child("Shipping");
         myRefShippingTruck = myRef.child("ShippingTruck");
@@ -262,10 +264,10 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
 
     private void addFragment() {
         if (filterable) {
-            //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.conto, fr).commit();
-//            Intent i = new Intent(getActivity(), HomeActivity.class);
-//            startActivity(i);
-//            getActivity().finish();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.conto, HomeFragment.newInstance()).commit();
+            Intent i = new Intent(getActivity(), HomeActivity.class);
+            startActivity(i);
+            getActivity().finish();
         }
     }
 
