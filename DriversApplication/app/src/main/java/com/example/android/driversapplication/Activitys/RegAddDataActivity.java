@@ -1,7 +1,10 @@
 package com.example.android.driversapplication.Activitys;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +19,8 @@ import com.example.android.driversapplication.Models.Driver;
 import com.example.android.driversapplication.Models.ShipinngDriverTrucks;
 import com.example.android.driversapplication.Models.TaxiDriver;
 import com.example.android.driversapplication.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,6 +28,9 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
     private DatabaseReference myRefTaxi;
     private DatabaseReference myRefShipping;
     private DatabaseReference myRefEvokuator;
+    private FirebaseAuth mAuth;
+
+    public static DatabaseReference goRef;
 
     private EditText etName;
     private EditText etSrName;
@@ -48,14 +56,22 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
     private Button btnEvikuator;
     private Button btnArsaqum;
     private Button btnTaxi;
+    private FirebaseUser user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg_add_data);
 
+
+
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference().child("drivers");
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+
         myRefTaxi = myRef.child(getString(R.string.Taxi));
         myRefShipping = myRef.child("Shipping");
         myRefShippingTruck = myRef.child("ShippingTruck");
@@ -105,18 +121,22 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
         filter(name, srName, phoneeeee1, phoneeeee2, passport, address, autoNumber, autoPassport);
 
         if (filterable && x == 0) {
+
             Driver driver = new Driver(name, srName, phoneeeee1, phoneeeee2, passport, address, autoNumber, autoPassport);
+            driver.setUid(user.getUid());
             myReff.child("users").child(driver.getUid()).setValue(driver);
         }
         if (filterable) {
             if (x == 4 || x == 7) {
                 TaxiDriver taxist = new TaxiDriver(name, srName, phoneeeee1, phoneeeee2, passport, address, autoNumber, autoPassport, x);
+                taxist.setUid(user.getUid());
                 myReff.child("users").child(taxist.getUid()).setValue(taxist);
             }
         }
         if(filterable) {
             if(x != 4 && x != 7 && x != 0) {
                 ShipinngDriverTrucks sp = new ShipinngDriverTrucks(name, srName, phoneeeee1, phoneeeee2, passport, address, autoNumber, autoPassport, x);
+                sp.setUid(user.getUid());
                 myReff.child("users").child(sp.getUid()).setValue(sp);
             }
         }
@@ -229,35 +249,42 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
             }
             case R.id.btn_register: {
                 if (taxi && !araqum) {
+//                    goRef = myRefTaxi;
                     addDatabase(myRefTaxi, x);
                     addFragment();
+                    addShared("Taxi");
 
                 }
                 if (taxi && araqum) {
                     addDatabase(myRefTaxi, x);
                     addDatabase(myRefShipping, 0);
                     addFragment();
+                    addShared("xxxxx");
 
                 }
 
                 if (araqum && !taxi) {
                     addDatabase(myRefShipping, 0);
                     addFragment();
+                    addShared("Shipping");
 
                 }
 
                 if (evokuator) {
                     addDatabase(myRefEvokuator, 0);
                     addFragment();
+                    addShared("Evokuator");
 
                 }
                 if (shippingTruck) {
                     addDatabase(myRefShippingTruck, x);
                     addFragment();
+                    addShared("ShippingTruck");
                 }
                 if(manipulyator) {
                     addDatabase(myRefManipulyator, 0);
                     addFragment();
+                    addShared("Manipulyator");
                 }
                 break;
             }
@@ -265,11 +292,22 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void addFragment() {
+
         if (filterable) {
             Intent i = new Intent(this, HomeActivity.class);
+//            i.putExtra("esim", aaaaaaa);
             startActivity(i);
             finish();
         }
+    }
+
+    private void addShared(String value) {
+
+        SharedPreferences sharedPref = getSharedPreferences("babkenjan", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("babken", value);
+        editor.apply();
+
     }
 
     private void dialogTaxi() {

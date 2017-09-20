@@ -31,7 +31,7 @@ public class ShipinngDriverTrucks {
         this.autoNumber = autoNumber;
         this.autoPassport = autoPassport;
         this.truck = truck;
-        this.uid = passport;
+        //this.uid = passport;
         status = "offLine";
     }
 

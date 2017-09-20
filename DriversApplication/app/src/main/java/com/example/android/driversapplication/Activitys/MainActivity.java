@@ -16,12 +16,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.driversapplication.Fragments.HistoryFragment;
-import com.example.android.driversapplication.Fragments.HomeFragment;
-import com.example.android.driversapplication.Fragments.RegisterFragment;
-import com.example.android.driversapplication.Models.Driver;
-import com.example.android.driversapplication.Models.ShipinngDriverTrucks;
-import com.example.android.driversapplication.Models.TaxiDriver;
+//import com.example.android.driversapplication.Fragments.HistoryFragment;
+//import com.example.android.driversapplication.Fragments.HomeFragment;
+//import com.example.android.driversapplication.Fragments.RegisterFragment;
+//import com.example.android.driversapplication.Models.Driver;
+//import com.example.android.driversapplication.Models.ShipinngDriverTrucks;
+//import com.example.android.driversapplication.Models.TaxiDriver;
 import com.example.android.driversapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

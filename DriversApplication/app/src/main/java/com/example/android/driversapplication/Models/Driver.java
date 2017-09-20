@@ -29,7 +29,7 @@ public class Driver {
         this.address = address;
         this.autoNumber = autoNumber;
         this.autoPassport = autoPassport;
-        this.uid = passport;
+        //this.uid = passport;
         status = "offLine";
     }
 
@@ -59,7 +59,9 @@ public class Driver {
         return uid;
     }
 
-
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
     public String getName() {
         return name;

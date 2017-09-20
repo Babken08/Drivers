@@ -31,7 +31,8 @@ public class TaxiDriver {
         this.autoNumber = autoNumber;
         this.autoPassport = autoPassport;
         this.seats = seats;
-        this.uid = passport;
+        status = "oFFline";
+       // this.uid = passport;
     }
 
     public String getStatus() {
@@ -118,7 +119,7 @@ public class TaxiDriver {
         return uid;
     }
 
-//    public void setUid(String uid) {
-//        this.uid = uid;
-//    }
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 }
