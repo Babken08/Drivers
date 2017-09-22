@@ -1,6 +1,5 @@
 package com.example.android.driversapplication.Activitys;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -124,20 +123,35 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
 
             Driver driver = new Driver(name, srName, phoneeeee1, phoneeeee2, passport, address, autoNumber, autoPassport);
             driver.setUid(user.getUid());
-            myReff.child("users").child(driver.getUid()).setValue(driver);
+            myReff.child(driver.getUid()).setValue(driver);
         }
         if (filterable) {
             if (x == 4 || x == 7) {
                 TaxiDriver taxist = new TaxiDriver(name, srName, phoneeeee1, phoneeeee2, passport, address, autoNumber, autoPassport, x);
                 taxist.setUid(user.getUid());
-                myReff.child("users").child(taxist.getUid()).setValue(taxist);
+
+                if(x == 4) {
+                    myReff.child("seats4").child(taxist.getUid()).setValue(taxist);
+                } else if(x == 7) {
+                    myReff.child("seats7").child(taxist.getUid()).setValue(taxist);
+                }
+
             }
         }
         if(filterable) {
             if(x != 4 && x != 7 && x != 0) {
                 ShipinngDriverTrucks sp = new ShipinngDriverTrucks(name, srName, phoneeeee1, phoneeeee2, passport, address, autoNumber, autoPassport, x);
                 sp.setUid(user.getUid());
-                myReff.child("users").child(sp.getUid()).setValue(sp);
+                if(x == 3){
+                    myReff.child("truck3").child(sp.getUid()).setValue(sp);
+                }else if(x == 6) {
+                    myReff.child("truck6").child(sp.getUid()).setValue(sp);
+
+                }else if(x == 9) {
+                    myReff.child("truck9").child(sp.getUid()).setValue(sp);
+
+                }
+
             }
         }
     }
@@ -251,39 +265,39 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
                 if (taxi && !araqum) {
 //                    goRef = myRefTaxi;
                     addDatabase(myRefTaxi, x);
-                    addFragment();
-                    addShared("Taxi");
+                    goHomeActivity();
+                    addShared("Taxi" + x);
 
                 }
                 if (taxi && araqum) {
                     addDatabase(myRefTaxi, x);
                     addDatabase(myRefShipping, 0);
-                    addFragment();
-                    addShared("xxxxx");
+                    goHomeActivity();
+                    addShared("xxxxx" + x);
 
                 }
 
                 if (araqum && !taxi) {
                     addDatabase(myRefShipping, 0);
-                    addFragment();
+                    goHomeActivity();
                     addShared("Shipping");
 
                 }
 
                 if (evokuator) {
                     addDatabase(myRefEvokuator, 0);
-                    addFragment();
+                    goHomeActivity();
                     addShared("Evokuator");
 
                 }
                 if (shippingTruck) {
                     addDatabase(myRefShippingTruck, x);
-                    addFragment();
-                    addShared("ShippingTruck");
+                    goHomeActivity();
+                    addShared("ShippingTruck" + x);
                 }
                 if(manipulyator) {
                     addDatabase(myRefManipulyator, 0);
-                    addFragment();
+                    goHomeActivity();
                     addShared("Manipulyator");
                 }
                 break;
@@ -291,7 +305,7 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    private void addFragment() {
+    private void goHomeActivity() {
 
         if (filterable) {
             Intent i = new Intent(this, HomeActivity.class);

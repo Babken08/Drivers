@@ -120,11 +120,33 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void addValue(String value) {
-        if(!mParam1.equals("xxxxx")){
+        /*if(!mParam1.equals("xxxxx")){
             myRef.child(mParam1).child("users").child(user.getUid()).child("status").setValue(value);
         } else {
             myRef.child("Taxi").child("users").child(user.getUid()).child("status").setValue(value);
             myRef.child("Shipping").child("users").child(user.getUid()).child("status").setValue(value);
+        }*/
+
+        if(mParam1.equals("xxxxx4")){
+            myRef.child("Taxi").child("seats4").child(user.getUid()).child("status").setValue(value);
+            myRef.child("Shipping").child(user.getUid()).child("status").setValue(value);
+        }else if(mParam1.equals("xxxxx7")){
+            myRef.child("Taxi").child("seats7").child(user.getUid()).child("status").setValue(value);
+            myRef.child("Shipping").child(user.getUid()).child("status").setValue(value);
+        }else if(mParam1.equals("ShippingTruck3")){
+            myRef.child("ShippingTruck").child("truck3").child(user.getUid()).child("status").setValue(value);
+        }else if(mParam1.equals("ShippingTruck6")) {
+            myRef.child("ShippingTruck").child("truck6").child(user.getUid()).child("status").setValue(value);
+        }else if(mParam1.equals("ShippingTruck9")) {
+            myRef.child("ShippingTruck").child("truck9").child(user.getUid()).child("status").setValue(value);
+        }else if(mParam1.equals("Taxi4")) {
+            myRef.child("Taxi").child("seats4").child(user.getUid()).child("status").setValue(value);
+        }else if(mParam1.equals("Taxi7")) {
+            myRef.child("Taxi").child("seats7").child(user.getUid()).child("status").setValue(value);
+        }else {
+            myRef.child(mParam1).child(user.getUid()).child("status").setValue(value);
+
         }
+
     }
 }
