@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.driversapplication.R;
+import com.example.android.driversapplication.Utils.NetworkUtil;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,16 +26,10 @@ import com.google.firebase.database.FirebaseDatabase;
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private static final String ARG_PARAM1 = "param1";
-    private FirebaseAuth mAuth;
     private DatabaseReference myRef;
-
-    private FloatingActionMenu fam;
-    private FloatingActionButton fab1, fab2, fab3;
     private View rootView;
     private FirebaseUser user;
-    private FirebaseDatabase database;
     private String mParam1;
-    private FloatingActionButton fab4;
     private TextView tv;
 
     public HomeFragment() {}
@@ -54,11 +49,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         if(getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
         }
-        database = FirebaseDatabase.getInstance();
+        FirebaseDatabase  database = FirebaseDatabase.getInstance();
 
         myRef = database.getReference().child("drivers");
 
-        mAuth = FirebaseAuth.getInstance();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
         user = mAuth.getCurrentUser();
 
@@ -76,11 +71,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initFABMenu() {
-        fam = (FloatingActionMenu) rootView.findViewById(R.id.fab_menu);
-        fab1 = (FloatingActionButton) rootView.findViewById(R.id.fab1);
-        fab2 = (FloatingActionButton) rootView.findViewById(R.id.fab2);
-        fab3 = (FloatingActionButton) rootView.findViewById(R.id.fab3);
-        fab4 = (FloatingActionButton) rootView.findViewById(R.id.fab4);
+        FloatingActionMenu fam = (FloatingActionMenu) rootView.findViewById(R.id.fab_menu);
+        FloatingActionButton fab1 = (FloatingActionButton) rootView.findViewById(R.id.fab1);
+        FloatingActionButton fab2 = (FloatingActionButton) rootView.findViewById(R.id.fab2);
+        FloatingActionButton  fab3 = (FloatingActionButton) rootView.findViewById(R.id.fab3);
+        FloatingActionButton fab4 = (FloatingActionButton) rootView.findViewById(R.id.fab4);
         fam.setOnClickListener(this);
         fab1.setOnClickListener(this);
         fab2.setOnClickListener(this);
@@ -106,9 +101,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 int balanse = Integer.parseInt(tv.getText().toString());
                 if(balanse < 100) {
                     Toast.makeText(getContext(), "licqavoreq dzer hashiv@", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String statusInternet = NetworkUtil.getConnectivityStatusString(getContext());
+                if(statusInternet.equals("Not connected to Internet")){
+                    Toast.makeText(getContext(), "plase enabled your Internet", Toast.LENGTH_SHORT).show();
                 }else {
                     addValue("OnLine");
                 }
+
                 break;
             }
             case R.id.fab4: {
@@ -120,12 +121,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void addValue(String value) {
-        /*if(!mParam1.equals("xxxxx")){
-            myRef.child(mParam1).child("users").child(user.getUid()).child("status").setValue(value);
-        } else {
-            myRef.child("Taxi").child("users").child(user.getUid()).child("status").setValue(value);
-            myRef.child("Shipping").child("users").child(user.getUid()).child("status").setValue(value);
-        }*/
 
         if(mParam1.equals("xxxxx4")){
             myRef.child("Taxi").child("seats4").child(user.getUid()).child("status").setValue(value);
