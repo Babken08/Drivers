@@ -4,10 +4,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-/**
- * Created by Android on 26.09.2017.
- */
-
 public class NetworkUtil {
 
     public static int TYPE_WIFI = 1;

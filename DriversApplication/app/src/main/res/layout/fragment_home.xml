@@ -94,6 +94,6 @@
         android:layout_alignBottom="@+id/fab_menu"
         android:layout_centerHorizontal="true"
         android:paddingBottom="20dp"
-        android:text="80"
+        android:text="800"
         android:textSize="40sp"/>
 </RelativeLayout>

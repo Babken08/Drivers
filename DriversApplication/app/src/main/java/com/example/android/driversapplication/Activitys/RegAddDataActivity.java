@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.driversapplication.Models.Driver;
-import com.example.android.driversapplication.Models.ShipinngDriverTrucks;
 import com.example.android.driversapplication.Models.TaxiDriver;
 import com.example.android.driversapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegAddDataActivity extends AppCompatActivity implements View.OnClickListener {
     private DatabaseReference myRefTaxi;
-    private DatabaseReference myRefShipping;
+    //private DatabaseReference myRefShipping;
     private DatabaseReference myRefEvokuator;
     private FirebaseAuth mAuth;
 
@@ -40,20 +39,20 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
     private EditText etAutoPassport;
     private EditText etAutoNumber;
     private boolean taxi;
-    private boolean araqum;
+    //private boolean araqum;
     private boolean evokuator;
     private boolean shippingTruck;
-    private boolean manipulyator;
+    //private boolean manipulyator;
     private boolean filterable;
     private long phoneeeee1;
     private long phoneeeee2;
     private DatabaseReference myRefShippingTruck;
     private int x;
-    private DatabaseReference myRefManipulyator;
-    private Button btnManipulyator;
+    //private DatabaseReference myRefManipulyator;
+   // private Button btnManipulyator;
     private Button btnShipingTruk;
     private Button btnEvikuator;
-    private Button btnArsaqum;
+    //private Button btnArsaqum;
     private Button btnTaxi;
     private FirebaseUser user;
 
@@ -65,17 +64,16 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
 
 
 
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference().child("drivers");
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
         myRefTaxi = myRef.child(getString(R.string.Taxi));
-        myRefShipping = myRef.child("Shipping");
+        //myRefShipping = myRef.child("Shipping");
         myRefShippingTruck = myRef.child("ShippingTruck");
         myRefEvokuator = myRef.child(getString(R.string.Evokuator));
-        myRefManipulyator = myRef.child("Manipulyator");
+        //myRefManipulyator = myRef.child("Manipulyator");
 
         findView();
     }
@@ -92,16 +90,16 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
         Button btnAccess = (Button) findViewById(R.id.btn_register);
         btnShipingTruk = (Button) findViewById(R.id.btn_bernatar_araqum);
         btnTaxi = (Button) findViewById(R.id.btn_taxi);
-        btnArsaqum = (Button) findViewById(R.id.btn_araqum);
+       // btnArsaqum = (Button) findViewById(R.id.btn_araqum);
         btnEvikuator = (Button) findViewById(R.id.btn_evokuator);
-        btnManipulyator = (Button) findViewById(R.id.btn_manipulyator);
+       // btnManipulyator = (Button) findViewById(R.id.btn_manipulyator);
 
         btnAccess.setOnClickListener(this);
         btnTaxi.setOnClickListener(this);
-        btnArsaqum.setOnClickListener(this);
+//        btnArsaqum.setOnClickListener(this);
         btnEvikuator.setOnClickListener(this);
         btnShipingTruk.setOnClickListener(this);
-        btnManipulyator.setOnClickListener(this);
+//        btnManipulyator.setOnClickListener(this);
     }
     private void addDatabase(DatabaseReference myReff, int x) {
         String name = etName.getText().toString();
@@ -138,22 +136,21 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
 
             }
         }
-        if(filterable) {
-            if(x != 4 && x != 7 && x != 0) {
-                ShipinngDriverTrucks sp = new ShipinngDriverTrucks(name, srName, phoneeeee1, phoneeeee2, passport, address, autoNumber, autoPassport, x);
-                sp.setUid(user.getUid());
-                if(x == 3){
-                    myReff.child("truck3").child(sp.getUid()).setValue(sp);
-                }else if(x == 6) {
-                    myReff.child("truck6").child(sp.getUid()).setValue(sp);
-
-                }else if(x == 9) {
-                    myReff.child("truck9").child(sp.getUid()).setValue(sp);
-
-                }
-
-            }
-        }
+//        if(filterable) {
+//            if(x != 4 && x != 7 && x != 0) {
+//                ShipinngDriverTrucks sp = new ShipinngDriverTrucks(name, srName, phoneeeee1, phoneeeee2, passport, address, autoNumber, autoPassport, x);
+//                sp.setUid(user.getUid());
+//                if(x == 3){
+//                    myReff.child("truck3").child(sp.getUid()).setValue(sp);
+//                }else if(x == 6) {
+//                    myReff.child("truck6").child(sp.getUid()).setValue(sp);
+//
+//                }else if(x == 9) {
+//                    myReff.child("truck9").child(sp.getUid()).setValue(sp);
+//
+//                }
+//            }
+//        }
     }
 
     private boolean filter(String name, String srName, long phone1, long phone2, String passport, String address, String autoNumber, String autoPassport) {
@@ -202,87 +199,87 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
                 btnTaxi.setBackgroundResource(R.color.colorGreen);
                 btnEvikuator.setBackgroundResource(R.color.colorTXAVARI);
                 btnShipingTruk.setBackgroundResource(R.color.colorTXAVARI);
-                btnManipulyator.setBackgroundResource(R.color.colorTXAVARI);
+//                btnManipulyator.setBackgroundResource(R.color.colorTXAVARI);
                 dialogTaxi();
                 taxi = true;
                 evokuator = false;
                 shippingTruck = false;
-                manipulyator = false;
+//                manipulyator = false;
                 break;
             }
-            case R.id.btn_araqum: {
-                btnArsaqum.setBackgroundResource(R.color.colorGreen);
-                btnEvikuator.setBackgroundResource(R.color.colorTXAVARI);
-                btnShipingTruk.setBackgroundResource(R.color.colorTXAVARI);
-                btnManipulyator.setBackgroundResource(R.color.colorTXAVARI);
-                araqum = true;
-                evokuator = false;
-                shippingTruck = false;
-                manipulyator = false;
-                break;
-            }
+//            case R.id.btn_araqum: {
+//                btnArsaqum.setBackgroundResource(R.color.colorGreen);
+//                btnEvikuator.setBackgroundResource(R.color.colorTXAVARI);
+//                btnShipingTruk.setBackgroundResource(R.color.colorTXAVARI);
+//                btnManipulyator.setBackgroundResource(R.color.colorTXAVARI);
+//                araqum = true;
+//                evokuator = false;
+//                shippingTruck = false;
+//                manipulyator = false;
+//                break;
+//            }
             case R.id.btn_bernatar_araqum: {
                 btnShipingTruk.setBackgroundResource(R.color.colorGreen);
-                btnManipulyator.setBackgroundResource(R.color.colorTXAVARI);
+//                btnManipulyator.setBackgroundResource(R.color.colorTXAVARI);
                 btnEvikuator.setBackgroundResource(R.color.colorTXAVARI);
                 btnTaxi.setBackgroundResource(R.color.colorTXAVARI);
-                btnArsaqum.setBackgroundResource(R.color.colorTXAVARI);
-                dialogShippingTruck();
+//                btnArsaqum.setBackgroundResource(R.color.colorTXAVARI);
+               // dialogShippingTruck();
                 shippingTruck = true;
                 taxi = false;
-                araqum = false;
+//                araqum = false;
                 evokuator = false;
-                manipulyator = false;
+//                manipulyator = false;
                 break;
             }
             case R.id.btn_evokuator: {
                 btnEvikuator.setBackgroundResource(R.color.colorGreen);
                 btnShipingTruk.setBackgroundResource(R.color.colorTXAVARI);
-                btnManipulyator.setBackgroundResource(R.color.colorTXAVARI);
+//                btnManipulyator.setBackgroundResource(R.color.colorTXAVARI);
                 btnTaxi.setBackgroundResource(R.color.colorTXAVARI);
-                btnArsaqum.setBackgroundResource(R.color.colorTXAVARI);
+//                btnArsaqum.setBackgroundResource(R.color.colorTXAVARI);
                 evokuator = true;
                 taxi = false;
-                araqum = false;
+//                araqum = false;
                 shippingTruck = false;
-                manipulyator = false;
+//                manipulyator = false;
                 break;
             }
-            case R.id.btn_manipulyator: {
-                btnManipulyator.setBackgroundResource(R.color.colorGreen);
-                btnTaxi.setBackgroundResource(R.color.colorTXAVARI);
-                btnArsaqum.setBackgroundResource(R.color.colorTXAVARI);
-                btnEvikuator.setBackgroundResource(R.color.colorTXAVARI);
-                btnShipingTruk.setBackgroundResource(R.color.colorTXAVARI);
-                manipulyator = true;
-                taxi = false;
-                araqum = false;
-                shippingTruck = false;
-                evokuator = false;
-                break;
-            }
+//            case R.id.btn_manipulyator: {
+//                btnManipulyator.setBackgroundResource(R.color.colorGreen);
+//                btnTaxi.setBackgroundResource(R.color.colorTXAVARI);
+//                btnArsaqum.setBackgroundResource(R.color.colorTXAVARI);
+//                btnEvikuator.setBackgroundResource(R.color.colorTXAVARI);
+//                btnShipingTruk.setBackgroundResource(R.color.colorTXAVARI);
+//                manipulyator = true;
+//                taxi = false;
+//                araqum = false;
+//                shippingTruck = false;
+//                evokuator = false;
+//                break;
+//            }
             case R.id.btn_register: {
-                if (taxi && !araqum) {
+                if (taxi) {
 //                    goRef = myRefTaxi;
                     addDatabase(myRefTaxi, x);
                     goHomeActivity();
                     addShared("Taxi" + x);
 
                 }
-                if (taxi && araqum) {
-                    addDatabase(myRefTaxi, x);
-                    addDatabase(myRefShipping, 0);
-                    goHomeActivity();
-                    addShared("xxxxx" + x);
-
-                }
-
-                if (araqum && !taxi) {
-                    addDatabase(myRefShipping, 0);
-                    goHomeActivity();
-                    addShared("Shipping");
-
-                }
+//                if (taxi && araqum) {
+//                    addDatabase(myRefTaxi, x);
+//                    addDatabase(myRefShipping, 0);
+//                    goHomeActivity();
+//                    addShared("xxxxx" + x);
+//
+//                }
+//
+//                if (araqum && !taxi) {
+//                    addDatabase(myRefShipping, 0);
+//                    goHomeActivity();
+//                    addShared("Shipping");
+//
+//                }
 
                 if (evokuator) {
                     addDatabase(myRefEvokuator, 0);
@@ -291,15 +288,15 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
 
                 }
                 if (shippingTruck) {
-                    addDatabase(myRefShippingTruck, x);
+                    addDatabase(myRefShippingTruck, 0);
                     goHomeActivity();
-                    addShared("ShippingTruck" + x);
+                    addShared("ShippingTruck");
                 }
-                if(manipulyator) {
-                    addDatabase(myRefManipulyator, 0);
-                    goHomeActivity();
-                    addShared("Manipulyator");
-                }
+//                if(manipulyator) {
+//                    addDatabase(myRefManipulyator, 0);
+//                    goHomeActivity();
+//                    addShared("Manipulyator");
+//                }
                 break;
             }
         }

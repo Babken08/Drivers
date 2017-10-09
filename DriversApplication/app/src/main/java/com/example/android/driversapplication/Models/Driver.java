@@ -33,19 +33,6 @@ public class Driver {
         status = "offLine";
     }
 
-//    public Driver(String name, String srName, long phone1, long phone2, String passport, String address, String autoNumber, String autoPassport, int size) {
-//        this.name = name;
-//        this.srName = srName;
-//        this.phone1 = phone1;
-//        this.phone2 = phone2;
-//        this.passport = passport;
-//        this.address = address;
-//        this.autoNumber = autoNumber;
-//        this.autoPassport = autoPassport;
-//        this.size = size;
-//        this.uid = passport;
-//    }
-
 
     public String getStatus() {
         return status;

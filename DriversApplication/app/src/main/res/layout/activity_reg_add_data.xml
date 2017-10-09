@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
     tools:context="com.example.android.driversapplication.Activitys.RegAddDataActivity">
 
 
@@ -126,87 +128,84 @@
 
     <LinearLayout
         android:id="@+id/laynerlayout"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:layout_marginTop="11dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_auto"
         android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_araqum"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:layout_weight="1"
-            android:background="@color/common_google_signin_btn_text_dark_disabled"
-            android:text="@string/Button_shipping" />
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/btn_bernatar_araqum"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_weight="1"
             android:background="@color/common_google_signin_btn_text_dark_disabled"
             android:text="@string/shipping_trucks" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/buttons"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_below="@+id/laynerlayout"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/btn_manipulyator"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:layout_weight="1"
-            android:background="@color/common_google_signin_btn_text_dark_disabled"
-            android:text="manipulyator" />
-
-
         <Button
             android:id="@+id/btn_evokuator"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_weight="1"
+            android:layout_marginTop="11dp"
             android:background="@color/common_google_signin_btn_text_dark_disabled"
             android:text="@string/Button_evokuator" />
 
+        <Button
+            android:id="@+id/btn_taxi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:background="@color/common_google_signin_btn_text_dark_disabled"
+            android:text="@string/Button_taxi" />
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:background="@color/common_google_signin_btn_text_dark_disabled"
+            android:text="@string/button_allow_text" />
+
+
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_taxi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttons"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="11dp"
-        android:background="@color/common_google_signin_btn_text_dark_disabled"
-        android:text="@string/Button_taxi" />
+    <!--<LinearLayout-->
+        <!--android:id="@+id/buttons"-->
+        <!--android:gravity="center"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:layout_below="@+id/laynerlayout"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+        <!---->
+        <!--<Button-->
+            <!--android:id="@+id/btn_evokuator"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@color/common_google_signin_btn_text_dark_disabled"-->
+            <!--android:text="@string/Button_evokuator" />-->
 
-    <Button
-        android:id="@+id/btn_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btn_taxi"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:background="@color/common_google_signin_btn_text_dark_disabled"
-        android:text="@string/button_allow_text" />
+    <!--</LinearLayout>-->
+
+    <!--<Button-->
+        <!--android:id="@+id/btn_taxi"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/buttons"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="11dp"-->
+        <!--android:background="@color/common_google_signin_btn_text_dark_disabled"-->
+        <!--android:text="@string/Button_taxi" />-->
+
+    <!--<Button-->
+        <!--android:id="@+id/btn_register"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/btn_taxi"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:background="@color/common_google_signin_btn_text_dark_disabled"-->
+        <!--android:text="@string/button_allow_text" />-->
 
 </RelativeLayout>
