@@ -1,7 +1,9 @@
 package com.example.android.driversapplication.Service;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -29,16 +31,19 @@ public class LocationService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+
         return null;
     }
 
     @SuppressWarnings("MissingPermission")
     @Override
     public void onCreate() {
+        SharedPreferences sharedPref = getSharedPreferences("babkenjan", Context.MODE_PRIVATE);
+        String a = sharedPref.getString("babken", "ppp");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
         final DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference()
-                .child("photographs").child(user.getUid());
+                .child("drivers").child(a).child(user.getUid());
         mLatRef = mDatabaseRef.child("latitude");
         mLngRef = mDatabaseRef.child("longitude");
         mLocationListener = new LocationListener() {
@@ -47,12 +52,12 @@ public class LocationService extends Service {
                 Intent intent = new Intent("LOCATION_UPDATE");
                 intent.putExtra("lat", newLocation.getLatitude());
                 intent.putExtra("lng", newLocation.getLongitude());
-                sendBroadcast(intent);
                 if (oldLocation != newLocation) {
                     mLatRef.setValue(newLocation.getLatitude());
                     mLngRef.setValue(newLocation.getLongitude());
                     oldLocation = newLocation;
                 }
+                sendBroadcast(intent);
                 Log.i("ssssss", "location service");
             }
 

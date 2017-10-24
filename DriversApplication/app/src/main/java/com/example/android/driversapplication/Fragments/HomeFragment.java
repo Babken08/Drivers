@@ -1,7 +1,6 @@
 package com.example.android.driversapplication.Fragments;
 
 
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,9 +8,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.driversapplication.Activitys.MapsActivity;
 import com.example.android.driversapplication.R;
 import com.example.android.driversapplication.Utils.NetworkUtil;
 import com.github.clans.fab.FloatingActionButton;
@@ -29,6 +30,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private FirebaseUser user;
     private String mParam1;
     private TextView tv;
+    private ImageView img;
 
     public HomeFragment() {}
 
@@ -65,11 +67,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
         tv = (TextView) rootView.findViewById(R.id.tv_balance);
+        img = (ImageView) rootView.findViewById(R.id.image_welcome);
+
         initFABMenu();
         return rootView;
     }
 
     private void initFABMenu() {
+        img.setOnClickListener(this);
         FloatingActionMenu fam = (FloatingActionMenu) rootView.findViewById(R.id.fab_menu);
         FloatingActionButton fab1 = (FloatingActionButton) rootView.findViewById(R.id.fab1);
         FloatingActionButton fab2 = (FloatingActionButton) rootView.findViewById(R.id.fab2);
@@ -115,33 +120,42 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 addValue("OFFline");
                 break;
             }
+            case R.id.image_welcome: {
+
+
+                Intent i = new Intent(getActivity(), MapsActivity.class);
+                startActivity(i);
+                break;
+            }
         }
 
     }
 
     private void addValue(String value) {
-
-        if(mParam1.equals("Taxi4")){
-//            myRef.child("Taxi").child("seats4").child(user.getUid()).child("status").setValue(value);
-//            myRef.child("Shipping").child(user.getUid()).child("status").setValue(value);
-            myRef.child("Taxi").child("seats4").child(user.getUid()).child("status").setValue(value);
-//        }else if(mParam1.equals("xxxxx7")){
-//            myRef.child("Taxi").child("seats7").child(user.getUid()).child("status").setValue(value);
+//
+//        if(mParam1.equals("Taxi4")){
+////            myRef.child("Taxi").child("seats4").child(user.getUid()).child("status").setValue(value);
 ////            myRef.child("Shipping").child(user.getUid()).child("status").setValue(value);
-        }else if(mParam1.equals("ShippingTruck")){
-            myRef.child("ShippingTruck").child(user.getUid()).child("status").setValue(value);
-//        }else if(mParam1.equals("ShippingTruck6")) {
-//            myRef.child("ShippingTruck").child("truck6").child(user.getUid()).child("status").setValue(value);
-//        }else if(mParam1.equals("ShippingTruck9")) {
-//            myRef.child("ShippingTruck").child("truck9").child(user.getUid()).child("status").setValue(value);
-//        }else if(mParam1.equals("Taxi4")) {
-//            myRef.child("Taxi").child("seats4").child(user.getUid()).child("status").setValue(value);
-        }else if(mParam1.equals("Taxi7")) {
-            myRef.child("Taxi").child("seats7").child(user.getUid()).child("status").setValue(value);
-        }else {
-            myRef.child(mParam1).child(user.getUid()).child("status").setValue(value);
+//            myRef.child("Taxi4").child(user.getUid()).child("status").setValue(value);
+////        }else if(mParam1.equals("xxxxx7")){
+////            myRef.child("Taxi").child("seats7").child(user.getUid()).child("status").setValue(value);
+//////            myRef.child("Shipping").child(user.getUid()).child("status").setValue(value);
+//        }else if(mParam1.equals("ShippingTruck")){
+//            myRef.child("ShippingTruck").child(user.getUid()).child("status").setValue(value);
+////        }else if(mParam1.equals("ShippingTruck6")) {
+////            myRef.child("ShippingTruck").child("truck6").child(user.getUid()).child("status").setValue(value);
+////        }else if(mParam1.equals("ShippingTruck9")) {
+////            myRef.child("ShippingTruck").child("truck9").child(user.getUid()).child("status").setValue(value);
+////        }else if(mParam1.equals("Taxi4")) {
+////            myRef.child("Taxi").child("seats4").child(user.getUid()).child("status").setValue(value);
+//        }else if(mParam1.equals("Taxi7")) {
+//            myRef.child("Taxi7").child(user.getUid()).child("status").setValue(value);
+//        }else {
+//            myRef.child(mParam1).child(user.getUid()).child("status").setValue(value);
+//
+//        }
 
-        }
+        myRef.child(mParam1).child(user.getUid()).child("status").setValue(value);
 
     }
 }

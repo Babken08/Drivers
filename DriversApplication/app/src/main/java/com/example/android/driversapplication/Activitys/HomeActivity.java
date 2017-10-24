@@ -30,6 +30,8 @@ public class HomeActivity extends AppCompatActivity {
         String a = sharedPref.getString("babken", "ppp");
 
         Log.i("sssssssssssss", "wwwwwwwwwwwwwwwwwwwwww" + a);
-        getSupportFragmentManager().beginTransaction().replace(R.id.hom_conteiner, HomeFragment.newInstance(a)).commit();
+
+
+       getSupportFragmentManager().beginTransaction().replace(R.id.hom_conteiner, HomeFragment.newInstance(a)).commit();
     }
 }

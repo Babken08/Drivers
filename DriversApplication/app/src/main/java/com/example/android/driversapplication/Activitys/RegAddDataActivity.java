@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.driversapplication.Models.Driver;
-import com.example.android.driversapplication.Models.TaxiDriver;
 import com.example.android.driversapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,7 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegAddDataActivity extends AppCompatActivity implements View.OnClickListener {
-    private DatabaseReference myRefTaxi;
+    private DatabaseReference myRefTaxi7;
+    private DatabaseReference myRefTaxi4;
     //private DatabaseReference myRefShipping;
     private DatabaseReference myRefEvokuator;
     private FirebaseAuth mAuth;
@@ -69,7 +69,8 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
-        myRefTaxi = myRef.child(getString(R.string.Taxi));
+        myRefTaxi7 = myRef.child("Taxi7");
+        myRefTaxi4 = myRef.child("Taxi4");
         //myRefShipping = myRef.child("Shipping");
         myRefShippingTruck = myRef.child("ShippingTruck");
         myRefEvokuator = myRef.child(getString(R.string.Evokuator));
@@ -117,25 +118,25 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
 
         filter(name, srName, phoneeeee1, phoneeeee2, passport, address, autoNumber, autoPassport);
 
-        if (filterable && x == 0) {
+//        if (filterable && x == 0) {
 
             Driver driver = new Driver(name, srName, phoneeeee1, phoneeeee2, passport, address, autoNumber, autoPassport);
             driver.setUid(user.getUid());
             myReff.child(driver.getUid()).setValue(driver);
-        }
-        if (filterable) {
-            if (x == 4 || x == 7) {
-                TaxiDriver taxist = new TaxiDriver(name, srName, phoneeeee1, phoneeeee2, passport, address, autoNumber, autoPassport, x);
-                taxist.setUid(user.getUid());
-
-                if(x == 4) {
-                    myReff.child("seats4").child(taxist.getUid()).setValue(taxist);
-                } else if(x == 7) {
-                    myReff.child("seats7").child(taxist.getUid()).setValue(taxist);
-                }
-
-            }
-        }
+//        }
+//        if (filterable) {
+//            if (x == 4 || x == 7) {
+//                TaxiDriver taxist = new TaxiDriver(name, srName, phoneeeee1, phoneeeee2, passport, address, autoNumber, autoPassport, x);
+//                taxist.setUid(user.getUid());
+//
+//                if(x == 4) {
+//                    myReff.child("seats4").child(taxist.getUid()).setValue(taxist);
+//                } else if(x == 7) {
+//                    myReff.child("seats7").child(taxist.getUid()).setValue(taxist);
+//                }
+//
+//            }
+//        }
 //        if(filterable) {
 //            if(x != 4 && x != 7 && x != 0) {
 //                ShipinngDriverTrucks sp = new ShipinngDriverTrucks(name, srName, phoneeeee1, phoneeeee2, passport, address, autoNumber, autoPassport, x);
@@ -260,11 +261,15 @@ public class RegAddDataActivity extends AppCompatActivity implements View.OnClic
 //            }
             case R.id.btn_register: {
                 if (taxi) {
-//                    goRef = myRefTaxi;
-                    addDatabase(myRefTaxi, x);
-                    goHomeActivity();
-                    addShared("Taxi" + x);
-
+                    if(x == 4){
+                        addDatabase(myRefTaxi4, x);
+                        goHomeActivity();
+                        addShared("Taxi" + x);
+                    }else if(x == 7) {
+                        addDatabase(myRefTaxi7, x);
+                        goHomeActivity();
+                        addShared("Taxi" + x);
+                    }
                 }
 //                if (taxi && araqum) {
 //                    addDatabase(myRefTaxi, x);
